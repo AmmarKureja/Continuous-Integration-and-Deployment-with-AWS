@@ -1,0 +1,9 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t ammarkureja/Continuous-Integration-and-Deployment-with-AWS -f Dockerfile.dev .
+
+script: 
+    - docker run -e CI=true ammarkureja/Continuous-Integration-and-Deployment-with-AWS npm run test
